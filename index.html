@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="dist/css/style.css">
+</head>
+
+<body>
+    <header class="absolute top-0 left-0 w-full flex items-center z-10">
+
+        <div class="container">
+            <div class="flex items-center justify-between relative">
+                <div class="flex px-4 gap-1">
+
+                    <a href="#" class="font-bold text-lg text-primary block py-6">
+                        <h1>Halo Rizki</h1>
+                    </a>
+                </div>
+
+                <div class="flex items-center px-4">
+
+                    <button id="hamburger" name="hamburger" type="button" class="block absolute right-4">
+                        <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+                        <span class="hamburger-line transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
+                    </button>
+
+                    <nav id="nav-menu"
+                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full">
+                        <ul class="block">
+                            <li class="group">
+                                <div class="flex justify-center items-center">
+                                    <img src="dist/img/user-1.png" alt="image" width="50" class="block py-6">
+                                </div>
+                            </li>
+
+                            <li class="group">
+                                <div class="flex justify-center items-center">
+                                    <p href="#" class="text-base text-dark py-2 mx-8 group-hover:text-primary">Rizki
+                                        Taufiq
+                                        Ramadan</p>
+                                </div>
+                            </li>
+
+                            <li class="group">
+                                <div class="flex justify-center items-center">
+                                    <p href="#" class="text-base text-primary py-2 mx-8 group-hover:text-primary">
+                                        Full-Stack Web Developer</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="px-4 pt-36">
+        <div class="container bg-primary rounded-tl-lg rounded-br-lg h-auto shadow-lg">
+            <div class="flex flex-wrap">
+                <div class="flex justify-between w-full px-4 shadow-lg">
+                    <div class="flex-row items-center text-white p-4">
+                        <h1 class="font-bold text-sm lg:text-lg xl:text-xl 2xl:text-2xl gap-1">Welcome To Do List
+                        </h1>
+                        <p class="text-sm lg:text-lg xl:text-xl 2xl:text-2xl">Your work will be manage well with a <b>
+                                simple program </b> but big
+                            changes your life</p>
+                    </div>
+
+                    <div class="flex-row items-center p-4 mt-2 text-white">
+                        <img src="dist/img/content-1-no-bg.png" width="200" alt="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 mt-12">
+        <div class=" container flex justify-start h-auto bg-gray-100 w-full">
+
+            <form id="dataFormMakeToDoList" class="w-full p-4 bg-white rounded shadow-lg">
+                <h1 class="text-primary font-bold mb-2 justify-center">Make To Do List</h1>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="task">
+                        To Do
+                    </label>
+                    <textarea
+                        class="shadow appearance-none bg-gray border border-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="task" name="task" type="text" placeholder="Enter your task" required> </textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="priorityLevel">
+                        Level Activity
+                    </label>
+                    <select id="priorityLevel" name="priorityLevel"
+                        class="block appearance-none w-full bg-gray border border-none hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit">
+                        Submit
+                    </button>
+                </div>
+        </div>
+    </section>
+
+    <section class="px-4 mt-12">
+        <div class=" container flex justify-start h-auto bg-gray-100 w-full rounded shadow-lg">
+            <div class="container w-full overflow-x-auto">
+                <h1 class="text-primary font-bold mb-2 justify-center">Task List</h1>
+                <table class="w-full bg-white border border-gray mb-8 p-4">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm border-b">Status</th>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm border-b">Task</th>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm border-b">Priority
+                                Level
+                            </th>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm border-b">Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="bodyToDoListData" class="text-center">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 mt-12">
+        <div class=" container flex justify-start h-auto bg-gray-100 w-full rounded shadow-lg">
+            <div class="container w-full overflow-x-auto">
+                <h1 class="text-tertiary font-bold mb-2 justify-center">Task is Done</h1>
+                <table class="w-full bg-white border border-gray mb-8 p-4">
+                    <thead class="bg-tertiary text-white">
+                        <tr>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm border-b">Status</th>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm border-b">Task</th>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm border-b">Priority
+                                Level
+                            </th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm border-b">Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="bodyIsDoneToDoListData" class="text-center">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 mt-12 mb-6">
+        <div class="container w-screen">
+            <a id="deleteAll"
+                class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete
+                All</a>
+        </div>
+    </section>
+
+    <script src="dist/js/script.js"></script>
+</body>
+
+</html>
