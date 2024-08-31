@@ -106,10 +106,10 @@ function toggleTaskCompletion(taskCell, row) {
   );
 
   if (row.parentNode === bodyToDoListData) {
-    taskCell.classList.add("line-through");
+    taskCell.style.textDecoration = "line-through";
     bodyIsDoneToDoListData.appendChild(row);
   } else {
-    taskCell.classList.remove("line-through");
+    taskCell.style.textDecoration = "none";
     bodyToDoListData.appendChild(row);
   }
 
@@ -134,9 +134,9 @@ function saveTasks() {
     .querySelectorAll("#bodyIsDoneToDoListData tr")
     .forEach(function (row) {
       let toDoListData = {
-        task: row.children[0].textContent,
-        priorityLevel: row.children[1].textContent,
-        dayDate: row.children[2].textContent,
+        task: row.children[1].textContent,
+        priorityLevel: row.children[2].textContent,
+        dayDate: row.children[3].textContent,
         completed: true,
       };
       isDoneToDoList.push(toDoListData);
@@ -175,28 +175,27 @@ function loadTaskData() {
     taskCell.classList.add("px-4", "py-2");
     taskCell.textContent = toDo.task;
     if (task.completed) {
-      taskCell.classList.add("line-through");
+      taskCell.style.textDecoration = "line-through";
     }
 
     let priorityLevelCell = document.createElement("td");
     priorityLevelCell.classList.add("px-4", "py-2");
-
     priorityLevelCell.textContent = toDo.priorityLevel;
 
-    let dayDateCell = document.createElement("td");
-
     let dayDates = toDo.dayDate;
-
-    const dayDate = dayDates.split(",")[1].trim();
-    const taskDate = new Date(dayDate);
+    const dayDateSplite = dayDates.split(",")[1].trim();
+    const taskDate = new Date(dayDateSplite);
 
     const currentDay = new Date();
     currentDay.setHours(0, 0, 0, 0);
+
+    let dayDateCell = document.createElement("td");
 
     if (taskDate < currentDay) {
       dayDateCell.classList.add("px-4", "py-2", "text-primary");
     }
 
+    dayDateCell.classList.add("px-4", "py-2");
     dayDateCell.textContent = toDo.dayDate;
 
     row.appendChild(statusCell);
@@ -210,8 +209,20 @@ function loadTaskData() {
   isDoneToDoListData.forEach(function (toDo) {
     let row = document.createElement("tr");
 
+    let statusCell = document.createElement("td");
+    statusCell.classList.add("px-4", "py-2");
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("mr-2");
+    checkbox.checked = toDo.completed;
+    checkbox.addEventListener("change", function () {
+      toggleTaskCompletion(taskCell, row);
+    });
+    statusCell.appendChild(checkbox);
+
     let taskCell = document.createElement("td");
-    taskCell.classList.add("px-4", "py-2", "line-through");
+    taskCell.style.textDecoration = "line-through";
     taskCell.textContent = toDo.task;
 
     let priorityLevelCell = document.createElement("td");
@@ -222,6 +233,7 @@ function loadTaskData() {
     dayDateCell.classList.add("px-4", "py-2");
     dayDateCell.textContent = toDo.dayDate;
 
+    row.appendChild(statusCell);
     row.appendChild(taskCell);
     row.appendChild(priorityLevelCell);
     row.appendChild(dayDateCell);
